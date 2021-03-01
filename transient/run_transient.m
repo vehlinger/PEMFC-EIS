@@ -37,7 +37,7 @@ for ii = 1:length(frange)
     n_cycle = 5;
 
     tfinal = T*n_cycle;
-    dt = 0.001*T;
+    dt = 0.0002*T;
 
     time(1) = 0;
     k = 1;
