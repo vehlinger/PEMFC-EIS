@@ -37,7 +37,7 @@ for ii = 1:length(frange)
     n_cycle = 5;
 
     tfinal = T*n_cycle;
-    dt = 0.0002*T;
+    dt = 0.0001*T;
 
     time(1) = 0;
     k = 1;
@@ -77,5 +77,5 @@ end
 
 figure
 plot(-Zr,-Zj,'o')
-xlabel('Z_r (\Omega/cm^2)')
-ylabel('-Z_j (\Omega/cm^2)')
+xlabel('Z_r (\Omega cm^2)')
+ylabel('-Z_j (\Omega cm^2)')

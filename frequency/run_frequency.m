@@ -8,7 +8,7 @@ C = zeros(nj,n);     % change variable
 % parameters
 alpha = 1;
 sigma = 7;   % S/cm
-kappa = 0.05; % S/cm
+kappa = 0.1; % S/cm
 a = 1e3;     % 1/cm 
 Cdl = 2e-5;  % F/cm2 
 D = 0.3;     % cm2/s (O2 in water)
@@ -17,7 +17,7 @@ params = [n nj alpha sigma kappa a Cdl D];
 % operating conditions
 L = 0.001;   % cm
 T0 = 353.15; % K
-Vcell = 0.75; % V
+Vcell = 0.72; % V
 deltaV = 1e-5;
 RH = 0.5;
 p = 1;
@@ -28,7 +28,7 @@ op_cond = [L T0 Vcell C0 p];
 load C_ss.mat C_ss
 C_ss = steady_state(C_ss,n,nj,params,op_cond);
 
-frange = logspace(3,9,61);
+frange = logspace(-3,10,131);
 
 for ii = 1:length(frange)
     f = frange(ii);       % frequency (Hz)
@@ -43,15 +43,5 @@ tend = toc(timerVal);
 
 figure
 plot(-real(Z),-imag(Z),'o-')
-hold on
-plot(-real(Z(21)),-imag(Z(21)),'o','color','k',...
-    'MarkerFaceColor','k')
-text(-real(Z(21)),-imag(Z(21)),'   10 kHz')
-plot(-real(Z(28)),-imag(Z(28)),'o','color','k',...
-    'MarkerFaceColor','k')
-text(-real(Z(28)),-imag(Z(28)),'   50 kHz')
-plot(-real(Z(31)),-imag(Z(31)),'o','color','k',...
-    'MarkerFaceColor','k')
-text(-real(Z(31)),-imag(Z(31)),'   100 kHz')
-xlabel('Z_r (\Omega/cm^2)')
-ylabel('-Z_j (\Omega/cm^2)')
+xlabel('Z_r (\Omega cm^2)')
+ylabel('-Z_j (\Omega cm^2)')

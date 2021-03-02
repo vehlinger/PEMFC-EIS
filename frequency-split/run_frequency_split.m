@@ -47,17 +47,5 @@ tend = toc(timerVal);
 
 figure
 plot(-real(Z),-imag(Z),'o')
-hold on
-plot(-real(Z(21)),-imag(Z(21)),'o','color','k',...
-    'MarkerFaceColor','k')
-text(-real(Z(21)),-imag(Z(21)),'   10 kHz')
-plot(-real(Z(28)),-imag(Z(28)),'o','color','k',...
-    'MarkerFaceColor','k')
-text(-real(Z(28)),-imag(Z(28)),'   50 kHz')
-plot(-real(Z(31)),-imag(Z(31)),'o','color','k',...
-    'MarkerFaceColor','k')
-text(-real(Z(31)),-imag(Z(31)),'   100 kHz')
-xlabel('Z_r (\Omega/cm^2)')
-ylabel('-Z_j (\Omega/cm^2)')
-% xlim([0 0.2])
-% ylim([0 0.1])
+xlabel('Z_r (\Omega cm^2)')
+ylabel('-Z_j (\Omega cm^2)')
