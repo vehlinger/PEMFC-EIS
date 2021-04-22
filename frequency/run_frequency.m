@@ -9,7 +9,7 @@ C = zeros(nj,n);     % change variable
 alpha = 1;
 sigma = 7;   % S/cm
 kappa = 0.1; % S/cm
-a = 1e3;     % 1/cm 
+a = 500;     % 1/cm 
 Cdl = 2e-5;  % F/cm2 
 D = 0.3;     % cm2/s (O2 in water)
 params = [n nj alpha sigma kappa a Cdl D];
@@ -17,7 +17,7 @@ params = [n nj alpha sigma kappa a Cdl D];
 % operating conditions
 L = 0.001;   % cm
 T0 = 353.15; % K
-Vcell = 0.72; % V
+Vcell = 0.75; % V
 deltaV = 1e-5;
 RH = 0.5;
 p = 1;
