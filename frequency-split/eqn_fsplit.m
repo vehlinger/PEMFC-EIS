@@ -99,7 +99,7 @@ function eq = eqn_fsplit(j,jp,k,dC,C,nj,params,op_cond,C_ss)
     % Imaginary
     if j < nj
         eq(iNO2+n) = fluxleft_fsplit(j,iNO2+n,C,C_ss,params,op_cond,dx)-...
-            fluxright_split(j,iNO2+n,C,C_ss,params,op_cond,dx);
+            fluxright_fsplit(j,iNO2+n,C,C_ss,params,op_cond,dx);
     else
         eq(iNO2+n) = C(j,iyO2+n); 
     end
