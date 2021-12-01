@@ -8,7 +8,7 @@ C = zeros(nj,n);     % change variable
 % parameters
 alpha = 1;
 sigma = 7;   % S/cm
-kappa = 0.05; % S/cm
+kappa = 0.1; % S/cm
 a = 1e3;     % 1/cm 
 Cdl = 2e-5;  % F/cm2 
 D = 0.3;     % cm2/s (O2 in water)
@@ -20,9 +20,9 @@ T0 = 353.15; % K
 Vcell = 0.75; % V
 deltaV = 1e-5;
 RH = 0.5;
-p = 1;
+p = 1; % bar
 Pwsat = exp(11.6832-3816.44/(T0-46.13)); 
-C0 = 0.21*(1-RH*(Pwsat/p));   
+C0 = 0.21*(1-RH*(Pwsat/p)); % mol/cm3 
 op_cond = [L T0 Vcell C0 p];
 
 load C_ss.mat C_ss
