@@ -7,8 +7,6 @@ for j = 1:nj
     A = zeros(n,n);     % matrix of dG/dC at j-1 
     B = zeros(n,n);     % matrix of dG/dC at j
     D = zeros(n,n); % matrix of dG/dC at j+1
-%     X = zeros(n,n);     % matrix of dG/dC at j-2 
-%     Y = zeros(n,n);     % matrix of dG/dC at j+2
 
     % initialize G (k = 1, dC = 0)
     G = eqn(j,j,1,0,C,nj,params,op_cond,Cp,dt); 
