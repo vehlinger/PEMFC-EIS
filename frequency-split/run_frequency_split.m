@@ -1,4 +1,4 @@
-clear all; close all; clc
+clear all; %close all; clc
 
 timerVal = tic;
 n = 6;               % number of unknowns at each mesh point (including fluxes)
@@ -30,7 +30,7 @@ for j = 1:length(Vcell)
     load C_ss.mat C_ss
     C_ss = steady_state(C_ss,n,nj,params,op_cond);
 
-    frange = logspace(-3,10,131);
+    frange = logspace(-3,6,91);
     
     for ii = 1:length(frange)
         f = frange(ii);       % frequency (Hz)

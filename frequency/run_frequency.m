@@ -8,7 +8,6 @@ C = zeros(nj,n);     % change variable
 % parameters
 alpha = 1;
 sigma = 7;   % S/cm
-
 kappa = 0.1; % S/cm
 a = 1e3;     % 1/cm 
 Cdl = 0.2;   % F/cm2 
