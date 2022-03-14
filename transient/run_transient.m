@@ -1,5 +1,6 @@
 clear all; close all; clc
 
+timerVal = tic;
 n = 6;               % number of unknowns at each mesh point
 nj = 21;             % number of mesh points
 C = zeros(nj,n);     % change variable 
@@ -16,7 +17,7 @@ params = [n nj alpha sigma kappa a Cdl D];
 % operating conditions
 L = 0.001;   % cm
 T0 = 353.15; % K
-Vcell = 1; % V
+Vcell = 0.75; % V
 RH = 0.5;
 p = 1;
 Pwsat = exp(11.6832-3816.44/(T0-46.13)); 
@@ -30,7 +31,7 @@ C_ss = steady_state(C_ss,n,nj,params,op_cond);
 frange = logspace(-3,-2,11); % method goes unstable around 60 mHz
 for ii = 1:length(frange)
     f = frange(ii); % Hz
-    disp(f)
+    fprintf('f = %d Hz\n',f)
     T = 1/f;        % period (s)
     omega = 2*pi*f; % angular frequency
     deltaV = 1e-5;  % V
@@ -73,7 +74,9 @@ for ii = 1:length(frange)
     Zj(ii) = imag((Vr(ii)+1j*Vj(ii))/(Ir(ii)+1j*Ij(ii)));
     
     clear time V i C Cp Ct
-end 
+end
+
+tend = toc(timerVal);
 
 %%
 % note Zr must be mulitplied by -1 to get positive real impedance

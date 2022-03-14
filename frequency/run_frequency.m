@@ -8,8 +8,9 @@ C = zeros(nj,n);     % change variable
 % parameters
 alpha = 1;
 sigma = 7;   % S/cm
-kappa = 0.05; % S/cm
-a = 1000;     % 1/cm 
+
+kappa = 0.1; % S/cm
+a = 1e3;     % 1/cm 
 Cdl = 0.2;   % F/cm2 
 D = 0.3;     % cm2/s (O2 in water)
 params = [n nj alpha sigma kappa a Cdl D];
