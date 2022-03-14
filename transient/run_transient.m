@@ -9,7 +9,7 @@ alpha = 1;
 sigma = 7;   % S/cm  
 kappa = 0.1; % S/cm
 a = 1e3;     % 1/cm  
-Cdl = 2e-5;  % F/cm2 
+Cdl = 0.2;   % F/cm2 
 D = 0.3;     % cm2/s (O2 in water)
 params = [n nj alpha sigma kappa a Cdl D];
 
@@ -27,7 +27,7 @@ load C_ss.mat C_ss
 C_ss = steady_state(C_ss,n,nj,params,op_cond);
 
 %% transient 
-frange = logspace(-3,3,61);
+frange = logspace(-3,-2,11); % method goes unstable around 60 mHz
 for ii = 1:length(frange)
     f = frange(ii); % Hz
     disp(f)
@@ -75,7 +75,19 @@ for ii = 1:length(frange)
     clear time V i C Cp Ct
 end 
 
+%%
+% note Zr must be mulitplied by -1 to get positive real impedance
 figure
-plot(-Zr,-Zj,'o')
+subplot(1,2,1)
+plot(-Zr,-Zj,'o-')
 xlabel('Z_r (\Omega cm^2)')
+ylabel('-Z_j (\Omega cm^2)')
+
+subplot(1,2,2)
+yyaxis left
+loglog(frange,-Zr)
+ylabel('Z_r (\Omega cm^2)')
+yyaxis right
+loglog(frange,-Zj)
+xlabel('frequency (Hz)')
 ylabel('-Z_j (\Omega cm^2)')

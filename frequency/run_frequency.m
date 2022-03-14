@@ -8,16 +8,16 @@ C = zeros(nj,n);     % change variable
 % parameters
 alpha = 1;
 sigma = 7;   % S/cm
-kappa = 0.1; % S/cm
+kappa = 0.05; % S/cm
 a = 1000;     % 1/cm 
-Cdl = 2e-5;  % F/cm2 
+Cdl = 0.2;   % F/cm2 
 D = 0.3;     % cm2/s (O2 in water)
 params = [n nj alpha sigma kappa a Cdl D];
 
 % operating conditions
 L = 0.001;   % cm
 T0 = 353.15; % K
-Vcell = [1 0.9 0.85 0.8 0.75 0.7]; % V
+Vcell = 1; % V
 deltaV = 1e-5;
 RH = 0.5;
 p = 1; % bar
@@ -30,7 +30,7 @@ for j = 1:length(Vcell)
     load C_ss.mat C_ss
     C_ss = steady_state(C_ss,n,nj,params,op_cond);
 
-    frange = logspace(-3,10,131);
+    frange = logspace(-3,6,91);
 
     for ii = 1:length(frange)
         f = frange(ii);       % frequency (Hz)
@@ -40,13 +40,25 @@ for j = 1:length(Vcell)
         Ctilde = freq_response(Ctilde,n,nj,params,op_cond,C_ss);
         Z(ii) = Ctilde(end,2)/(Ctilde(end,1));
     end
-    filename = sprintf('frequency_split%umV.mat',Vcell(j)*1000);
+    filename = sprintf('Z%umV.mat',Vcell(j)*1000);
     save(filename, 'frange','Z')
 end
 
 tend = toc(timerVal);
 
+%%
+% note Zr must be mulitplied by -1 to get positive real impedance
 figure
+subplot(1,2,1)
 plot(-real(Z),-imag(Z),'o-')
 xlabel('Z_r (\Omega cm^2)')
+ylabel('-Z_j (\Omega cm^2)')
+
+subplot(1,2,2)
+yyaxis left
+loglog(frange,-real(Z))
+ylabel('Z_r (\Omega cm^2)')
+yyaxis right
+loglog(frange,-imag(Z))
+xlabel('frequency (Hz)')
 ylabel('-Z_j (\Omega cm^2)')
